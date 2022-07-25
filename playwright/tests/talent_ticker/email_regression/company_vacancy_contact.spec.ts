@@ -29,13 +29,11 @@ test("Contact Messaging From Vacancy Using Outlook Integration", async ({ page }
 
   // Click #profileImgWrap
   await page.click('#profileImgWrap');
+  
   // Click text=Sign out
-  await Promise.all([
-    page.waitForNavigation(/*{ url: 'https://staging.talentticker.ai/logout' }*/),
-    page.click('text=Sign out')
-  ]);
-  // Go to https://staging.talentticker.ai/
-  await page.goto(process.env.BASE_URL);
+  await page.click("text=Sign out");
+
+  await expect(page).toHaveURL(process.env.BASE_URL);
 
   // Click text=Log In
   await page.click('text=Log In');
